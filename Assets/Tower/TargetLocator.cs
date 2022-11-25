@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class TargetLocator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject ammo;
+
+    Transform target;
+    Transform weapon;
+
+    private void Start()
     {
-        
+        target = FindObjectOfType<EnemyMover>().transform;
+        weapon = this.transform.Find("BallistaTopMesh");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        AimWeapon();
+        ShootWeapon();
+    }
+
+    private void AimWeapon()
+    {
+        weapon.transform.LookAt(target);
+    }
+
+    private void ShootWeapon()
+    {
+
     }
 }
