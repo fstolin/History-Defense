@@ -10,10 +10,12 @@ public class CoordinateLableHandler : MonoBehaviour
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color occupiedColor = Color.gray;
     
-    TextMeshPro label;
+
     // Coordinates to display in 2D space
     Vector2Int coordinates = new Vector2Int();
     MouseInputHandler mouseHandler;
+    TextMeshPro label;
+    bool areCoordsVisible;
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class CoordinateLableHandler : MonoBehaviour
 
     private void Update()
     {
+        ToggleLabels();
         // Update coordinates in editor
         if(!Application.isPlaying)
         {
@@ -37,17 +40,32 @@ public class CoordinateLableHandler : MonoBehaviour
     // Displays the coordinates on each game object.
     private void DisplayCoordinates()
     {
-        // Get the coordinates from the PARENT (tile) position. Save them to our Vector2Int variable.
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z); 
-        // Display the coordinates
-        label.text = (coordinates.x + ","  + coordinates.y);
+        if (!areCoordsVisible)
+        {
+            label.text = "";
+        } else
+        {
+            // Get the coordinates from the PARENT (tile) position. Save them to our Vector2Int variable.
+            coordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
+            coordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);
+            // Display the coordinates
+            label.text = (coordinates.x + "," + coordinates.y);
+        }
     }
 
     // Renames the gameobjects parent to current coordinates.
     private void RenameTheObject()
     {
         this.transform.parent.name = coordinates.ToString();
+    }
+
+    private void ToggleLabels()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            areCoordsVisible = !areCoordsVisible;
+            DisplayCoordinates();
+        }
     }
 
     private void ColorCoordinates()
