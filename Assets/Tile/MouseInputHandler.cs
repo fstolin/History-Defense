@@ -5,6 +5,8 @@ using UnityEngine;
 public class MouseInputHandler : MonoBehaviour
 {
     [SerializeField] bool isPlaceable;
+    public bool IsPlaceable { get { return isPlaceable; } }
+
     [SerializeField] GameObject tower;
 
     private void OnMouseDown()

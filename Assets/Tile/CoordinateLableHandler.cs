@@ -6,13 +6,19 @@ using TMPro;
 [ExecuteAlways]
 public class CoordinateLableHandler : MonoBehaviour
 {
+
+    [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color occupiedColor = Color.gray;
+    
     TextMeshPro label;
     // Coordinates to display in 2D space
     Vector2Int coordinates = new Vector2Int();
+    MouseInputHandler mouseHandler;
 
     private void Awake()
     {
         label = GetComponent<TextMeshPro>();
+        mouseHandler = GetComponentInParent<MouseInputHandler>();
         // Display the coordinates on awake -> once during gameplay.
         DisplayCoordinates();
     }
@@ -23,8 +29,9 @@ public class CoordinateLableHandler : MonoBehaviour
         if(!Application.isPlaying)
         {
             DisplayCoordinates();
-            RenameTheObject();
+            RenameTheObject();            
         }
+        ColorCoordinates();
     }
 
     // Displays the coordinates on each game object.
@@ -41,5 +48,16 @@ public class CoordinateLableHandler : MonoBehaviour
     private void RenameTheObject()
     {
         this.transform.parent.name = coordinates.ToString();
+    }
+
+    private void ColorCoordinates()
+    {
+        if (mouseHandler.IsPlaceable)
+        {
+            label.color = defaultColor;
+        } else
+        {
+            label.color = occupiedColor;
+        }
     }
 }

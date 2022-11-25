@@ -63,7 +63,7 @@ public class TargetLocator : MonoBehaviour
             // Coroutine stuff
             yield return new WaitForEndOfFrame();
         }
-        try { enemy.GetComponent<EnemyHealth>().damageUnit(1); } catch { }
+        try { enemy.GetComponent<EnemyHealth>().DamageUnit(1); } catch { }
         Destroy(projectile);
     }
 

@@ -13,17 +13,27 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    public void damageUnit(int damage)
+
+    // Damages a unit by an amount specified in damage
+    public void DamageUnit(int damage)
     {
         this.currentHealth -= Mathf.RoundToInt((1 - armor) * damage);
         CheckHealth();
     }
 
+    // Checks whether the enemy is dead
     private void CheckHealth()
     {
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    // Particle event fires DamageUnit() Method
+    private void OnParticleCollision(GameObject other)
+    {
+        int damageDone = other.GetComponentInParent<NewTargetLocator>().GetDamageDone();
+        DamageUnit(damageDone);
     }
 }
