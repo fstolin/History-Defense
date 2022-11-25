@@ -40,6 +40,6 @@ public class CoordinateLableHandler : MonoBehaviour
     // Renames the gameobjects parent to current coordinates.
     private void RenameTheObject()
     {
-        this.transform.parent.name = ("(" + coordinates.x + "," + coordinates.y + ")");
+        this.transform.parent.name = coordinates.ToString();
     }
 }
