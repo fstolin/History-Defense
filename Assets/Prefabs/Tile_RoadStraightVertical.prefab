@@ -53,7 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2927182616096161805, guid: 6730b00d6a89ab5429f44fa177f65b02, type: 3}
       propertyPath: m_Name
-      value: Tile_RoadNarrow
+      value: Tile_RoadStraightVertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733744418458965849, guid: 6730b00d6a89ab5429f44fa177f65b02, type: 3}
+      propertyPath: isPlaceable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8301815532776789448, guid: 6730b00d6a89ab5429f44fa177f65b02, type: 3}
       propertyPath: m_Mesh

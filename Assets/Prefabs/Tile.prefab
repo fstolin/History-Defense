@@ -274,6 +274,8 @@ GameObject:
   m_Component:
   - component: {fileID: 113578267566909168}
   - component: {fileID: 6068898217178632182}
+  - component: {fileID: 1439240111425596125}
+  - component: {fileID: 6733744418458965849}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -309,3 +311,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b9baf75b95377489ad6c7e6f6f6d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1439240111425596125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927182616096161805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.63, z: 10}
+  m_Center: {x: 0, y: -0.33, z: 0}
+--- !u!114 &6733744418458965849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927182616096161805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c7ab7efad4e494389ff03085e992fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlaceable: 1
+  tower: {fileID: 7742450082089316782, guid: 451687d53b2e1f9418da9513de3993fd, type: 3}
