@@ -207,3 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1782fac76b33d41ae6a409a5ab8f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammo: {fileID: 3005877748581756334, guid: 77c766561e9c625419fcb76726581d79, type: 3}
+  projectileSpeed: 2.5
+  fireRate: 1
