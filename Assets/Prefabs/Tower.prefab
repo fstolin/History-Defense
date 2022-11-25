@@ -208,5 +208,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 3005877748581756334, guid: 77c766561e9c625419fcb76726581d79, type: 3}
-  projectileSpeed: 2.5
+  projectileSpeed: 1.5
   fireRate: 1
