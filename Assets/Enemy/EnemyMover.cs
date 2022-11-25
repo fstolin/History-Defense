@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
-    [SerializeField] float waitTime = 1f;
+    [SerializeField] [Range(0f,5f)] float speed = 1f;
 
     void Start()
     {
@@ -17,37 +17,29 @@ public class EnemyMover : MonoBehaviour
     {
         foreach (Waypoint w in path)
         {
-            StartCoroutine(MoveEnemy(w));
-            yield return new WaitForSeconds(waitTime);
+            Vector3 startPosition = transform.position;
+            Vector3 endPosition = w.transform.position;
+            float travelPercent = 0f;
+
+            // Move progress
+            while (travelPercent < 1f)
+            {
+                travelPercent += Time.deltaTime * speed;
+                // LERP the start & beginning vectors to return the new position
+                Vector3 newPosition = Vector3.Lerp(startPosition, endPosition, travelPercent);
+
+                // Call the Handle Rotation method to return
+                //Quaternion newRotation = Quaternion.Euler(0f, HandleRotation(startPosition, endPosition), 0f);
+                transform.LookAt(endPosition);
+
+                // Sets the final enemy position
+                this.transform.position = newPosition;
+                //this.transform.SetPositionAndRotation(newPosition, newRotation);
+
+                // Update each frame
+                yield return new WaitForEndOfFrame();
+            }
         }
-    }
-
-    // Moves the enemy smoothly from its start position to the waypoint
-    private IEnumerator MoveEnemy(Waypoint waypoint)
-    {
-        Vector3 startPosition = transform.position;
-        Vector3 endPosition = waypoint.transform.position;
-        float travelPercent = 0f;
-
-        // Move progress
-        while(travelPercent < 1f)
-        {
-            travelPercent += Time.deltaTime;
-            // LERP the start & beginning vectors to return the new position
-            Vector3 newPosition = Vector3.Lerp(startPosition, endPosition, travelPercent);
-
-            // Call the Handle Rotation method to return
-            //Quaternion newRotation = Quaternion.Euler(0f, HandleRotation(startPosition, endPosition), 0f);
-            transform.LookAt(endPosition);
-            
-            // Sets the final enemy position
-            this.transform.position = newPosition;
-            //this.transform.SetPositionAndRotation(newPosition, newRotation);
-
-            // Update each frame
-            yield return new WaitForEndOfFrame();
-        }
-        
     }
 
     // Returns the wanted rotation of the enemy based on start & end waypoints
