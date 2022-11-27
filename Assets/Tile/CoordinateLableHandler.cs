@@ -31,6 +31,7 @@ public class CoordinateLableHandler : MonoBehaviour
         // Update coordinates in editor
         if(!Application.isPlaying)
         {
+            areCoordsVisible = true;
             DisplayCoordinates();
             RenameTheObject();            
         }

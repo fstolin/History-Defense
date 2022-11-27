@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
-    [SerializeField] [Range(0f,5f)] float speed = 1f;
+    [SerializeField] [Range(0f, 5f)] float speed = 1f;
+
+    List<Waypoint> path = new List<Waypoint>();
 
     void Start()
     {
+        FindPath();
         StartCoroutine(FollowPath());
+    }
+
+    // Finds the path according to the path tags
+    private void FindPath()
+    {
+        GameObject waypoints = GameObject.FindGameObjectWithTag("Path");
+        // Assign the waypoints to our path list
+        for (int i = 0; i < waypoints.transform.childCount; i++)
+        {
+            path.Add(waypoints.transform.GetChild(i).GetComponent<Waypoint>());
+        }
     }
 
     // Prints all waypoints name for this enemy - COROUTINE
@@ -39,34 +52,6 @@ public class EnemyMover : MonoBehaviour
                 // Update each frame
                 yield return new WaitForEndOfFrame();
             }
-        }
-    }
-
-    // Returns the wanted rotation of the enemy based on start & end waypoints
-    private float HandleRotation(Vector3 start, Vector3 end)
-    {
-        int xDelta = Mathf.RoundToInt(end.x - start.x);
-        int yDelta = Mathf.RoundToInt(end.y - start.y);
-
-        // RIGHT
-        if (xDelta >= 1 && yDelta == 0)
-        {
-            return 90f;
-        }
-        // LEFT
-        else if (xDelta <= -1 && yDelta == 0)
-        {
-            return -90f;
-        } 
-        // UP
-        else if (xDelta == 0 && yDelta >= 1)
-        {
-            return 0f;
-        } 
-        // DOWN
-        else
-        {
-            return 180f;
         }
     }
 }
