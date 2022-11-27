@@ -5016,6 +5016,7 @@ MonoBehaviour:
   damageDone: 1
   towerRange: 15
   weapons: {fileID: 1943763315708350332}
+  rangeSphere: {fileID: 6284145831664598422, guid: 6588a19040d55114ba6e38d0edc7ef84, type: 3}
 --- !u!1001 &7423593019271470443
 PrefabInstance:
   m_ObjectHideFlags: 0

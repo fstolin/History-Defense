@@ -7,9 +7,11 @@ public class NewTargetLocator : MonoBehaviour
     [SerializeField] int damageDone = 1;
     [SerializeField] float towerRange = 15f;
     [SerializeField] ParticleSystem weapons;
+    [SerializeField] GameObject rangeSphere;
 
     Transform target;
     Transform weaponSystem;
+    GameObject mySphere;
 
 
     public int GetDamageDone()
@@ -19,16 +21,22 @@ public class NewTargetLocator : MonoBehaviour
 
     private void Start()
     {
+        mySphere = Instantiate(rangeSphere, this.transform);
+        mySphere.SetActive(false);
         weaponSystem = this.transform.Find("BallistaTopMesh");
     }
 
     private void Update()
     {
+        // RANGE DISPLAY
+        if (Input.GetKeyDown(KeyCode.X)) SwithcRangeIndicator();
+
+        // GAME LOGIC
         FindClosestTarget();
-        
+                
         // Check that gameObejct is active, not null, and in the towers range.
-        if (target.gameObject.activeInHierarchy
-            && target != null 
+        if (target != null
+            && target.gameObject.activeInHierarchy
             && IsTargetInDistance(target))
         {
             AimWeapon();
@@ -91,6 +99,11 @@ public class NewTargetLocator : MonoBehaviour
         Debug.Log("Stop");
         var em = weapons.emission;
         em.enabled = false;
+    }
+
+    private void SwithcRangeIndicator()
+    {
+        mySphere.SetActive(!mySphere.activeSelf);
     }
 
 }
