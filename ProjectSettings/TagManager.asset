@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TowerRotator
   - FiredParticle
+  - Path
   layers:
   - Default
   - TransparentFX
