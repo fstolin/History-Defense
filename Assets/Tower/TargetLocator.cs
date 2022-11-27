@@ -15,23 +15,27 @@ public class TargetLocator : MonoBehaviour
 
     private void Start()
     {
-
-        enemy = FindObjectOfType<EnemyMover>().gameObject;
-        target = enemy.transform;
         weapon = this.transform.Find("BallistaTopMesh");
-
     }
 
     private void Update()
     {
+        FindClosestTarget();
         AimWeapon();
-        ShootTheWeapon();
+        //ShootTheWeapon();
     }
 
+    private void FindClosestTarget()
+    {
+        
+    }
+
+    // Aims the weapon specified in Start
     private void AimWeapon()
     {
         weapon.transform.LookAt(target);
     }
+
 
     private void ShootTheWeapon()
     {        
