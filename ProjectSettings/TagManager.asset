@@ -8,6 +8,7 @@ TagManager:
   - FiredParticle
   - Path
   - FireVFX
+  - RangeSphere
   layers:
   - Default
   - TransparentFX

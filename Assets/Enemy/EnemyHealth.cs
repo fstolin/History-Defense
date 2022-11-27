@@ -7,11 +7,17 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int maxHealth = 5;
     [SerializeField] float armor = 0f;
 
+    Enemy enemy;
     int currentHealth;
 
     private void OnEnable()
     {
         currentHealth = maxHealth;
+    }
+
+    private void Start()
+    {
+        enemy = GetComponent<Enemy>();
     }
 
     // Damages a unit by an amount specified in damage
@@ -26,8 +32,14 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            this.gameObject.SetActive(false);
+            HandleEnemyDeath();
         }
+    }
+
+    private void HandleEnemyDeath()
+    {
+        this.gameObject.SetActive(false);
+        enemy.RewardGold();
     }
 
     // Particle event fires DamageUnit() Method

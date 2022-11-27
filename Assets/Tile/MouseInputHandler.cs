@@ -7,20 +7,16 @@ public class MouseInputHandler : MonoBehaviour
     [SerializeField] bool isPlaceable;
     public bool IsPlaceable { get { return isPlaceable; } }
 
-    [SerializeField] GameObject tower;
+    [SerializeField] TowerMain tower;
 
     private void OnMouseDown()
     {
         if (isPlaceable)
         {
-            PlaceTower();
-            isPlaceable = false;
+            // Start placing tower
+            bool isPlaced = tower.TowerPlacement(transform);
+            // If tower is placed, make the til implacable
+            isPlaceable = !isPlaced;            
         }
-    }
-
-    private void PlaceTower()
-    {
-        // Place tower
-        Instantiate(tower, this.transform.position, Quaternion.identity);
     }
 }

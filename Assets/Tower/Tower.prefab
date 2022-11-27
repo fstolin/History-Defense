@@ -4978,6 +4978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7894762296356636937}
   - component: {fileID: 7558410682833714390}
+  - component: {fileID: -1450900623764648549}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -5016,7 +5017,20 @@ MonoBehaviour:
   damageDone: 1
   towerRange: 15
   weapons: {fileID: 1943763315708350332}
+  weaponEffect: {fileID: 6582175782340440191}
   rangeSphere: {fileID: 6284145831664598422, guid: 6588a19040d55114ba6e38d0edc7ef84, type: 3}
+--- !u!114 &-1450900623764648549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742450082089316782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54db6c2cd0386414c816e1cf383d25ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7423593019271470443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5081,5 +5095,10 @@ PrefabInstance:
 --- !u!4 &7353113725675861305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 76112032382560338, guid: 5d4c94691bb04014483de05f66dd705e, type: 3}
+  m_PrefabInstance: {fileID: 7423593019271470443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6582175782340440191 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4349756531326741780, guid: 5d4c94691bb04014483de05f66dd705e, type: 3}
   m_PrefabInstance: {fileID: 7423593019271470443}
   m_PrefabAsset: {fileID: 0}
