@@ -11,18 +11,28 @@ public class EnemyMover : MonoBehaviour
     void Start()
     {
         FindPath();
+        ReturnEnemyToStart();
         StartCoroutine(FollowPath());
     }
 
     // Finds the path according to the path tags
     private void FindPath()
     {
+        path.Clear();
+        // Find the parent of the tiles that cointain the path
+        // The path has to be sorted in hierarchy
         GameObject waypoints = GameObject.FindGameObjectWithTag("Path");
         // Assign the waypoints to our path list
         for (int i = 0; i < waypoints.transform.childCount; i++)
         {
             path.Add(waypoints.transform.GetChild(i).GetComponent<Waypoint>());
         }
+    }
+
+    // Returns / places the enemy to start position of the path
+    private void ReturnEnemyToStart()
+    {
+        this.transform.position = path[0].transform.position;
     }
 
     // Prints all waypoints name for this enemy - COROUTINE
@@ -53,5 +63,23 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        // End of path reached
+        EnemyEndOfPathReached();
     }
+
+    private void EnemyEndOfPathReached()
+    {
+        // Destroy Enemy
+
+        // Damage the player
+
+        // TODO: screen shake
+    }
+
+    private void DestroyEnemy()
+    {
+        // Enemy destruction, particles, sound effects etc.
+        Destroy(this.gameObject);
+    }
+
 }
