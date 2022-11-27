@@ -70,7 +70,7 @@ public class EnemyMover : MonoBehaviour
     private void EnemyEndOfPathReached()
     {
         // Destroy Enemy
-
+        DestroyEnemy();
         // Damage the player
 
         // TODO: screen shake
