@@ -8,7 +8,8 @@ public class EnemyMover : MonoBehaviour
 
     List<Waypoint> path = new List<Waypoint>();
 
-    void Start()
+
+    private void OnEnable()
     {
         FindPath();
         ReturnEnemyToStart();
@@ -69,17 +70,17 @@ public class EnemyMover : MonoBehaviour
 
     private void EnemyEndOfPathReached()
     {
-        // Destroy Enemy
-        DestroyEnemy();
+        // (Destroy) deactivate the enemy
+        GetRidOfEnemy();
         // Damage the player
 
         // TODO: screen shake
     }
 
-    private void DestroyEnemy()
+    private void GetRidOfEnemy()
     {
         // Enemy destruction, particles, sound effects etc.
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
 }

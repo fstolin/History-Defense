@@ -5,29 +5,51 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
+    [SerializeField] float spawnTimer = 1f;
+    [SerializeField] int poolSize = 5;
 
+    GameObject[] pool;
+
+    private void Awake()
+    {
+        PopulatePool();
+    }
 
     void Start()
     {
-        StartCoroutine(EnemySpawner(enemy));
+        StartCoroutine(EnemySpawner());
     }
 
-    void Update()
+    private void PopulatePool()
     {
-        
-    }
-
-    IEnumerator EnemySpawner (GameObject enemyType)
-    {
-        while (true)
+        pool = new GameObject[poolSize];
+        // Instantiate + disable objects
+        for (int i = 0; i < pool.Length; i++)
         {
-            SpawnEnemy(enemyType);
-            yield return new WaitForSeconds(1f);
+            pool[i] = Instantiate(enemy, this.transform);
+            pool[i].SetActive(false);
         }
     }
 
-    private void SpawnEnemy(GameObject enemyType)
+    IEnumerator EnemySpawner()
     {
-        Instantiate(enemyType);
+        while (true)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(spawnTimer);
+        }
+    }
+
+    // Enables the obejct / enemy from the pool
+    private void SpawnEnemy()
+    {
+        foreach (GameObject enemy in pool)
+        {
+            if (!enemy.activeSelf)
+            {
+                enemy.SetActive(true);
+                break;
+            }
+        }
     }
 }
