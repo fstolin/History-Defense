@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject[] enemies;
     [SerializeField] [Range(0.1f, 30f)] float spawnTimer = 1f;
     [SerializeField] [Range(1,50)] int poolSize = 5;
 
@@ -26,7 +26,8 @@ public class ObjectPool : MonoBehaviour
         // Instantiate + disable objects
         for (int i = 0; i < pool.Length; i++)
         {
-            pool[i] = Instantiate(enemy, this.transform);
+            var pick = Random.Range(0, 2);
+            pool[i] = Instantiate(enemies[pick], this.transform);
             pool[i].SetActive(false);
         }
     }

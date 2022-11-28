@@ -94,7 +94,13 @@ public class NewTargetLocator : MonoBehaviour
     {
         var em = weapons.emission;
         em.enabled = true;
-        if (!weapons.isEmitting) weapons.Play();
+        var wse = weaponEffect.emission;
+        wse.enabled = true;
+        if (!weapons.isEmitting)
+        {
+            weapons.Play();
+            weaponEffect.Play();
+        };
     }
 
     // Stops the tower from shooting
@@ -102,6 +108,8 @@ public class NewTargetLocator : MonoBehaviour
     {
         var em = weapons.emission;
         em.enabled = false;
+        var wse = weaponEffect.emission;
+        //wse.enabled = false;
     }
 
     // Enables / disables range indicators. TODO: transfer this functionality to a new script
