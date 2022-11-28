@@ -16,11 +16,13 @@ public class BankHandler : MonoBehaviour
     {
         currentBalance = startingBalance;
         bankUI = FindObjectOfType<BankUI>();
+        Debug.Log(bankUI);
+        bankUI.DisplayBankBalance(currentBalance);
     }
 
     private void Start()
     {
-        bankUI.DisplayBankBalance(currentBalance);
+        
     }
 
 
@@ -35,8 +37,8 @@ public class BankHandler : MonoBehaviour
     public void Withdraw(int amount)
     {
         currentBalance -= Mathf.Abs(amount);
-        HandleEndGame();
         bankUI.DisplayBankBalance(currentBalance);
+        HandleEndGame();            
     }
 
     // Restart the scene when player runs out of gold

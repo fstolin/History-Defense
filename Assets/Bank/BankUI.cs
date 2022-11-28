@@ -11,13 +11,11 @@ public class BankUI : MonoBehaviour
     void Start()
     {
         bank = FindObjectOfType<BankHandler>();
-        textMesh = GetComponent<TMP_Text>();
-        Debug.Log(textMesh);
-        Debug.Log(bank);
     }
 
     public void DisplayBankBalance(int value)
     {
+        textMesh = GetComponent<TMP_Text>();
         textMesh.text = "Gold: " + value.ToString();
     }
 

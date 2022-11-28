@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int maxHealth = 5;
+    [SerializeField] int difficultyRamp = 1;
     [SerializeField] float armor = 0f;
+
 
     Enemy enemy;
     int currentHealth;
@@ -39,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
     private void HandleEnemyDeath()
     {
         this.gameObject.SetActive(false);
+        maxHealth += difficultyRamp;
         enemy.RewardGold();
     }
 

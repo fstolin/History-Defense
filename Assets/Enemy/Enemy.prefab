@@ -141,7 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92bd8937ca94b224e90d9827308fb9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
+  difficultyRamp: 1
   armor: 0
 --- !u!65 &6623287733961178179
 BoxCollider:
@@ -168,3 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e19a028dbe98c4d87eff75b5bcbd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldReward: 25
+  goldPenalty: 25
