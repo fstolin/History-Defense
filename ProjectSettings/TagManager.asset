@@ -9,6 +9,7 @@ TagManager:
   - Path
   - FireVFX
   - RangeSphere
+  - GoldText
   layers:
   - Default
   - TransparentFX

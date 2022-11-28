@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLableHandler : MonoBehaviour
 {
 
@@ -35,7 +36,7 @@ public class CoordinateLableHandler : MonoBehaviour
             DisplayCoordinates();
             RenameTheObject();            
         }
-        ColorCoordinates();
+        SetLabelColor();
     }
 
     // Displays the coordinates on each game object.
@@ -69,7 +70,7 @@ public class CoordinateLableHandler : MonoBehaviour
         }
     }
 
-    private void ColorCoordinates()
+    private void SetLabelColor()
     {
         if (mouseHandler.IsPlaceable)
         {

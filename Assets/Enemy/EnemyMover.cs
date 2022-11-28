@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
@@ -28,11 +29,12 @@ public class EnemyMover : MonoBehaviour
         path.Clear();
         // Find the parent of the tiles that cointain the path
         // The path has to be sorted in hierarchy
-        GameObject waypoints = GameObject.FindGameObjectWithTag("Path");
+        GameObject pathParentObject = GameObject.FindGameObjectWithTag("Path");
         // Assign the waypoints to our path list
-        for (int i = 0; i < waypoints.transform.childCount; i++)
+        for (int i = 0; i < pathParentObject.transform.childCount; i++)
         {
-            path.Add(waypoints.transform.GetChild(i).GetComponent<Waypoint>());
+            Waypoint waypoint = pathParentObject.transform.GetChild(i).GetComponent<Waypoint>();
+            if (waypoint != null) path.Add(waypoint);
         }
     }
 
