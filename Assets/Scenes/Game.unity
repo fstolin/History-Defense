@@ -2773,6 +2773,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8624097365962361760, guid: f550d5c923dac324aa2712f72a2bc935, type: 3}
+      propertyPath: enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624097365962361760, guid: f550d5c923dac324aa2712f72a2bc935, type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 5174587713820274805, guid: 267a1ec47ae649d4192f11d25f53d8dc, type: 3}
+    - target: {fileID: 8624097365962361760, guid: f550d5c923dac324aa2712f72a2bc935, type: 3}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 5057629356368873774, guid: de7194dd1ed9c0046ae3d476faf79067, type: 3}
     - target: {fileID: 8624097365962361761, guid: f550d5c923dac324aa2712f72a2bc935, type: 3}
       propertyPath: m_RootOrder
       value: 3
