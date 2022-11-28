@@ -6,13 +6,21 @@ using UnityEngine.SceneManagement;
 public class BankHandler : MonoBehaviour
 {
     [SerializeField] int startingBalance = 150;
-
     [SerializeField] int currentBalance;
+
+    BankUI bankUI;
+
     public int CurrentBalance { get { return currentBalance; }  }
 
     private void Awake()
     {
         currentBalance = startingBalance;
+        bankUI = FindObjectOfType<BankUI>();
+    }
+
+    private void Start()
+    {
+        bankUI.DisplayBankBalance(currentBalance);
     }
 
 
@@ -20,6 +28,7 @@ public class BankHandler : MonoBehaviour
     public void Deposit(int amount)
     {
         currentBalance += Mathf.Abs(amount);
+        bankUI.DisplayBankBalance(currentBalance);
     }
 
     // Withdraw from the bank
@@ -27,8 +36,10 @@ public class BankHandler : MonoBehaviour
     {
         currentBalance -= Mathf.Abs(amount);
         HandleEndGame();
+        bankUI.DisplayBankBalance(currentBalance);
     }
 
+    // Restart the scene when player runs out of gold
     private void HandleEndGame()
     {
         if (currentBalance < 0) SceneManager.LoadScene(0);
